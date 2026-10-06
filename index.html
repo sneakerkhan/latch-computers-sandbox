@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Latch Computers | Computers, Tablets & Hardware</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">L</span>
+      <div>
+        <strong>Latch Computers</strong>
+        <small>Hardware marketplace</small>
+      </div>
+    </div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search laptops, GPUs, keyboards..." />
+    </div>
+    <button id="cartBtn" class="cart-btn">Cart <span id="cartCount">0</span></button>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Pennsylvania computer shop · Ships nationwide</p>
+      <h1>Computers, tablets, and everything in between.</h1>
+      <p>Desktops, laptops, GPUs, mice, keyboards, monitors, and accessories — each product on its own card.</p>
+    </div>
+    <div class="hero-stats">
+      <div><b id="skuCount">115</b><span>SKUs</span></div>
+      <div><b>4</b><span>Merch rails</span></div>
+      <div><b>Free</b><span>Ship over $99</span></div>
+    </div>
+  </section>
+
+  <nav id="cats" class="cats"></nav>
+
+  <main>
+    <section class="rail" data-rail="trending"><h2>Trending</h2><div class="grid" id="trending"></div></section>
+    <section class="rail" data-rail="new"><h2>New Arrivals</h2><div class="grid" id="newest"></div></section>
+    <section class="rail" data-rail="best"><h2>Best Sellers</h2><div class="grid" id="bestsellers"></div></section>
+    <section class="rail" data-rail="deals"><h2>Deals</h2><div class="grid" id="deals"></div></section>
+    <section>
+      <div class="section-head"><h2>All products</h2><span id="resultCount"></span></div>
+      <div class="grid" id="catalog"></div>
+    </section>
+  </main>
+
+  <aside id="drawer" class="drawer" hidden>
+    <div class="drawer-head"><h3>Cart</h3><button id="closeCart">Close</button></div>
+    <div id="cartLines"></div>
+    <p class="total">Total <b id="cartTotal">$0</b></p>
+    <button class="checkout" id="checkout">Checkout demo</button>
+  </aside>
+
+  <footer>
+    <p>Latch Computers · live sandbox · Mechanicsburg, PA</p>
+  </footer>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
