@@ -1,64 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Latch Computers | Computers, Tablets & Hardware</title>
-  <link rel="stylesheet" href="https://cdn.statically.io/gh/sneakerkhan/latch-computers-sandbox@main/styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="mark">L</span>
-      <div>
-        <strong>Latch Computers</strong>
-        <small>Hardware marketplace</small>
-      </div>
-    </div>
-    <div class="search">
-      <input id="q" type="search" placeholder="Search laptops, GPUs, keyboards..." />
-    </div>
-    <button id="cartBtn" class="cart-btn">Cart <span id="cartCount">0</span></button>
-  </header>
-
-  <section class="hero">
-    <div>
-      <p class="eyebrow">Pennsylvania computer shop · Ships nationwide</p>
-      <h1>Computers, tablets, and everything in between.</h1>
-      <p>Desktops, laptops, GPUs, mice, keyboards, monitors, and accessories — each product on its own card.</p>
-    </div>
-    <div class="hero-stats">
-      <div><b id="skuCount">187</b><span>SKUs</span></div>
-      <div><b>4</b><span>Merch rails</span></div>
-      <div><b>Free</b><span>Ship over $99</span></div>
-    </div>
-  </section>
-
-  <nav id="cats" class="cats"></nav>
-
-  <main>
-    <section class="rail" data-rail="trending"><h2>Trending</h2><div class="grid" id="trending"></div></section>
-    <section class="rail" data-rail="new"><h2>New Arrivals</h2><div class="grid" id="newest"></div></section>
-    <section class="rail" data-rail="best"><h2>Best Sellers</h2><div class="grid" id="bestsellers"></div></section>
-    <section class="rail" data-rail="deals"><h2>Deals</h2><div class="grid" id="deals"></div></section>
-    <section>
-      <div class="section-head"><h2>All products</h2><span id="resultCount"></span></div>
-      <div class="grid" id="catalog"></div>
-    </section>
-  </main>
-
-  <aside id="drawer" class="drawer" hidden>
-    <div class="drawer-head"><h3>Cart</h3><button id="closeCart">Close</button></div>
-    <div id="cartLines"></div>
-    <p class="total">Total <b id="cartTotal">$0</b></p>
-    <button class="checkout" id="checkout">Checkout demo</button>
-  </aside>
-
-  <footer>
-    <p>Latch Computers · live sandbox · 187 SKUs · Mechanicsburg, PA</p>
-  </footer>
-  <script src="https://cdn.statically.io/gh/sneakerkhan/latch-computers-sandbox@main/products.js"></script>
-  <script src="https://cdn.statically.io/gh/sneakerkhan/latch-computers-sandbox@main/products-extra.js"></script>
-  <script src="https://cdn.statically.io/gh/sneakerkhan/latch-computers-sandbox@main/app.js"></script>
-</body>
-</html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Latch Computers</title><link rel="stylesheet" href="styles.css" /><style>.art{height:150px;overflow:hidden;position:relative;background:#101820}.art img{width:100%;height:150px;object-fit:cover;display:block}.art span{position:absolute;left:8px;bottom:8px;background:#0c1118cc;color:#fff;border-radius:999px;font-size:11px;padding:3px 8px}</style></head><body>
+<header class="topbar"><div class="brand"><span class="mark">L</span><div><strong>Latch Computers</strong><small>Hardware marketplace</small></div></div><div class="search"><input id="q" type="search" placeholder="Search laptops, GPUs, keyboards..." /></div><button id="cartBtn" class="cart-btn">Cart <span id="cartCount">0</span></button></header>
+<section class="hero"><div><p class="eyebrow">Pennsylvania computer shop</p><h1>Computers, tablets, and everything in between.</h1></div><div class="hero-stats"><div><b id="skuCount">0</b><span>SKUs</span></div></div></section>
+<nav id="cats" class="cats"></nav><main><section><h2>Trending</h2><div class="grid" id="trending"></div></section><section><h2>New Arrivals</h2><div class="grid" id="newest"></div></section><section><h2>Best Sellers</h2><div class="grid" id="bestsellers"></div></section><section><h2>Deals</h2><div class="grid" id="deals"></div></section><section><h2>All products <span id="resultCount"></span></h2><div class="grid" id="catalog"></div></section></main>
+<aside id="drawer" class="drawer" hidden><div class="drawer-head"><h3>Cart</h3><button id="closeCart">Close</button></div><div id="cartLines"></div><p class="total">Total <b id="cartTotal">$0</b></p><button class="checkout" id="checkout">Checkout demo</button></aside>
+<script src="products.js"></script><script src="products-extra.js"></script><script>
+const cart=new Map(); let active='All';
+const photos={Laptops:['1517336714731-489689fd1ca8','1496181133206-80ce9b88a853'],Desktops:['1587202372634-32705e3bf49c','1593640408182-31c70c8268f5'],Tablets:['1544244015-0df4b3ffc6b0','1561154464-82e9adf32764'],GPUs:['1591488320449-011701bb6704','1518770660439-4636190af475'],CPUs:['1518770660439-4636190af475'],RAM:['1562976540-1502c2145186'],Storage:['1597872200969-2b65d56bd16b'],Monitors:['1527443224154-c4a3942d3acf'],Mice:['1527864550417-7fd91fc51a46'],Keyboards:['1511467687858-23d96c32e4ae','1587829741301-dc798b83add3'],Accessories:['1505740420928-5e560c06d30e'],Networking:['1544197150-b99a580bb7a8'],Hardware:['1587202372775-e229f172b9d7']};
+const money=n=>'$'+Number(n).toLocaleString();
+const photoFor=p=>{const pool=photos[p.category]||photos.Hardware; const n=parseInt(String(p.id).replace(/\D/g,''),10)||0; return 'https://images.weserv.nl/?url=images.unsplash.com/photo-'+pool[n%pool.length]+'&w=800&h=500&fit=cover&q=70';};
+function card(p){const el=document.createElement('article'); el.className='card'; el.innerHTML=`<div class="art"><img referrerpolicy="no-referrer" src="${photoFor(p)}" alt="${p.name}"><span>${p.category}</span></div><h3>${p.name}</h3><div class="meta">${p.blurb}</div><div class="price">${money(p.price)}</div><button class="add" data-add="${p.id}">Add to cart</button>`; return el;}
+function paint(n,l){n.innerHTML=''; l.forEach(p=>n.appendChild(card(p)));}
+function filtered(){const q=document.getElementById('q').value.trim().toLowerCase(); return PRODUCTS.filter(p=>(active==='All'||p.category===active)&&(`${p.name} ${p.category} ${p.blurb}`.toLowerCase().includes(q)));}
+function render(){const list=filtered(); paint(document.getElementById('trending'), list.filter(p=>p.badges?.includes('trending')).slice(0,8)); paint(document.getElementById('newest'), list.filter(p=>p.badges?.includes('new')).slice(0,8)); paint(document.getElementById('bestsellers'), list.filter(p=>p.badges?.includes('best')).slice(0,8)); paint(document.getElementById('deals'), list.filter(p=>p.badges?.includes('deal')||p.was).slice(0,8)); paint(document.getElementById('catalog'), list); document.getElementById('resultCount').textContent=list.length+' cards'; document.getElementById('skuCount').textContent=PRODUCTS.length;}
+function categories(){const cats=['All',...new Set(PRODUCTS.map(p=>p.category))]; const bar=document.getElementById('cats'); bar.innerHTML=''; cats.forEach(c=>{const b=document.createElement('button'); b.textContent=c; if(c===active) b.classList.add('active'); b.onclick=()=>{active=c; categories(); render();}; bar.appendChild(b);});}
+document.body.addEventListener('click', e=>{const id=e.target.dataset.add; if(!id) return; cart.set(id,(cart.get(id)||0)+1); document.getElementById('drawer').hidden=false;});
+document.getElementById('q').oninput=render; document.getElementById('cartBtn').onclick=()=>document.getElementById('drawer').hidden=false; document.getElementById('closeCart').onclick=()=>document.getElementById('drawer').hidden=true;
+categories(); render();
+</script></body></html>
